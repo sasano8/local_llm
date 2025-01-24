@@ -6,20 +6,29 @@ Ollama のインストール。
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
+インストールすると、デフォルトで 11434 ポートで Ollama サービスが起動します。
+
+
+Ollama サービスを停止する場合は以下のコマンドを実行します。
+
+```
+sudo systemctl stop ollama
+```
+
 
 # 日本語に強いローカルLLMの導入
 
 モデルをダウンロードする。
 
 ```
-wget -O models/Llama-3-ELYZA-JP-8B-q4_k_m/Llama-3-ELYZA-JP-8B-q4_k_m.gguf https://huggingface.co/elyza/Llama-3-ELYZA-JP-8B-GGUF/resolve/main/Llama-3-ELYZA-JP-8B-q4_k_m.gguf?download=true
-sha256sum Llama-3-ELYZA-JP-8B-q4_k_m.gguf # ハッシュを確認
+cd models/Llama-3-ELYZA-JP-8B-q4_k_m
+./download.sh
 ```
 
 モデルをデプロイする。
 
 ```
-ollama create elyza:jp8b -f models/Llama-3-ELYZA-JP-8B-q4_k_m/Modelfile
+ollama create elyza:jp8b -f Modelfile
 ```
 
 モデルと対話する。
